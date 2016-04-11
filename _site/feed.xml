@@ -6,8 +6,8 @@
 </description>
     <link>http://laobubu.github.io/</link>
     <atom:link href="http://laobubu.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 11 Apr 2016 14:08:37 +0800</pubDate>
-    <lastBuildDate>Mon, 11 Apr 2016 14:08:37 +0800</lastBuildDate>
+    <pubDate>Mon, 11 Apr 2016 14:51:54 +0800</pubDate>
+    <lastBuildDate>Mon, 11 Apr 2016 14:51:54 +0800</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       <item>
@@ -190,6 +190,50 @@ git push origin origin &amp;lt;new branch name&amp;gt;
         
         
         <category>git</category>
+        
+      </item>
+    
+      <item>
+        <title>Customize your shell with &#39;oh my zsh&#39; and autojump </title>
+        <description>&lt;ol&gt;
+  &lt;li&gt;install iterm&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;install autojump:&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;brew install autojump&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;install oh my zsh&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;sh -c “$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)”&lt;/p&gt;
+    &lt;/blockquote&gt;
+
+    &lt;p&gt;above will install oh my zsh to your local. It will change your default shell to zsh at the end of the process, if it doesn’t, execute below:&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;chsh -s /bin/zsh&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Open .zshrc file which located at the root of current user. e.g. /Users/joezhang/&lt;/li&gt;
+  &lt;li&gt;Modify &lt;code class=&quot;highlighter-rouge&quot;&gt;plugin&lt;/code&gt; to include “autojump”, like &lt;code class=&quot;highlighter-rouge&quot;&gt;plugins=(git,autojump)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add this into the .zshrc file&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;[[ -s $(brew –prefix)/etc/profile.d/autojump.sh ]] &amp;amp;&amp;amp; . $(brew –prefix)/etc/profile.d/autojump.sh&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Sat, 09 Apr 2016 00:00:00 +0800</pubDate>
+        <link>http://laobubu.github.io/category/shell/customize</link>
+        <guid isPermaLink="true">http://laobubu.github.io/category/shell/customize</guid>
+        
+        
+        <category>shell</category>
         
       </item>
     
