@@ -6,12 +6,12 @@
 </description>
     <link>http://laobubu.github.io/</link>
     <atom:link href="http://laobubu.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 11 Apr 2016 10:09:07 +0800</pubDate>
-    <lastBuildDate>Mon, 11 Apr 2016 10:09:07 +0800</lastBuildDate>
+    <pubDate>Mon, 11 Apr 2016 10:26:58 +0800</pubDate>
+    <lastBuildDate>Mon, 11 Apr 2016 10:26:58 +0800</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       <item>
-        <title>Git command</title>
+        <title>Branch</title>
         <description>&lt;h1 id=&quot;branch&quot;&gt;Branch&lt;/h1&gt;
 
 &lt;p&gt;Create and switch to a new branch&lt;/p&gt;
@@ -20,40 +20,18 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Push local branch to remote&lt;/p&gt;
+&lt;p&gt;Push local branch to remote, if remote branch does not exist, create it.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git push origin local_branch:remote_branch
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h1 id=&quot;this-is-my-first-blog&quot;&gt;This is my first blog&lt;/h1&gt;
-&lt;p&gt;And see if I can see anything.&lt;/p&gt;
+&lt;p&gt;List all branches/remote branches
+~~~shell
+git branch -a
+git branch -r
+~~~&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-	&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h1 id=&quot;another-way&quot;&gt;Another way&lt;/h1&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;reference something
-wefwfwefwef&lt;br /&gt;
-wef&lt;br /&gt;
-wf&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git branch -a
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;weba
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-See any difference  
-wef  
-wef
-&lt;/code&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 09 Apr 2016 00:00:00 +0800</pubDate>
         <link>http://laobubu.github.io/archivers/git</link>
