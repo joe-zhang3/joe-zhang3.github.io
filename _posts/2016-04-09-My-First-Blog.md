@@ -1,9 +1,10 @@
 ---
 layout: post
-title:  "Branch"
+title:  "git branch"
 date:   2016-04-09
 categories: git
 permalink: /category/git/branch
+url: /category/git/branch
 ---
 
 Create and switch to a new branch
