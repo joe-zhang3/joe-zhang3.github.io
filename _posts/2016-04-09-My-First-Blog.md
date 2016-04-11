@@ -3,7 +3,7 @@ layout: post
 title:  "Branch"
 date:   2016-04-09
 categories: git
-permalink: /archivers/git
+permalink: /category/git/branch
 ---
 
 Create and switch to a new branch
@@ -19,6 +19,7 @@ git push origin local_branch:remote_branch
 ~~~
 
 List all branches/remote branches
+
 ~~~shell
 git branch -a
 git branch -r

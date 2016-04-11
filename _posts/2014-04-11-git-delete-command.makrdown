@@ -3,7 +3,7 @@ layout: post
 title:  "delete"
 date:   2016-04-09
 categories: git
-permalink: /archivers/git
+permalink: /category/git/delete
 ---
 
 Add all files in current folder & subfolder
