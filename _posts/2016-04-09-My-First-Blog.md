@@ -6,8 +6,6 @@ categories: git
 permalink: /archivers/git
 ---
 
-# Branch
-
 Create and switch to a new branch
 
 ~~~shell 

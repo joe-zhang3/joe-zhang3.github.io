@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "delete"
+date:   2016-04-09
+categories: git
+permalink: /archivers/git
+---
+
+Add all files in current folder & subfolder
+
+~~~shell
+git add -A
+~~~
