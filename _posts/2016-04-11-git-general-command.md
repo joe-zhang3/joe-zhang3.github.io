@@ -10,7 +10,8 @@ url: /category/git/general
 Add all files in current folder & subfolder
 
 ~~~shell
-git add -A
+git add -A `is equivalent to git add --all`
+git add -u `is equivalent to git add --update`
 ~~~
 
 Rename of a file
