@@ -23,7 +23,7 @@ $ u # undo
 $ U # undo all changes to the current line
 
 $ x # delete one character
-$ dw # delete one **word**
+$ dw # delete one `word`
 $ d$ # delete all content after the cursor till the end of the line
 $ dd # delete the whole line
 
