@@ -14,7 +14,22 @@ git add -A `is equivalent to git add --all`
 git add -u `is equivalent to git add --update`
 ~~~
 
-Rename of a file
+Revert all changes in working copy
+**Make sure execute the command under the root of the git repo**
+
+~~~shell
+git checkout .
+git checkout -- .
+~~~
+
+Revert all changes in stage
+
+~~~shell
+git reset # put the staged changes back to working copy
+git reset --hard HEAD # completely revert all changes, the change will not stay in your working copy either. 
+~~~
+
+Rename of a file(s)
 
 ~~~shell
 git mv originalname newname
