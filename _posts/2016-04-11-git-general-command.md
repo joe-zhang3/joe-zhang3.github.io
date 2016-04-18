@@ -34,3 +34,9 @@ Rename of a file(s)
 ~~~shell
 git mv originalname newname
 ~~~
+
+Fully clean your working copy & index 
+
+~~~shell
+git fetch origin && git reset --hard <branchname> && git clean -df
+~~~

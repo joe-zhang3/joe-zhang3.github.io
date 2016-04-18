@@ -24,4 +24,3 @@ Diff specified file
 ~~~shell
 git diff file
 ~~~
-
