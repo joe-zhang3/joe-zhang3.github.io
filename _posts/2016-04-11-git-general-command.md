@@ -40,3 +40,9 @@ Fully clean your working copy & index
 ~~~shell
 git fetch origin && git reset --hard <branchname> && git clean -df
 ~~~
+
+Revert one commit on both local & remote
+
+~~~shell
+git revert [sha] && git push origin
+~~~
