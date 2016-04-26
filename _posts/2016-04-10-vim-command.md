@@ -38,4 +38,11 @@ $ :wq # save and exit
 $ ZZ # save and exit
 $ :q! # discard and exit
 
+
+$ ctrl+f scroll one screen down
+$ ctrl+b scroll one screen back
+
+$ :%s/oldkeyword/newkeyword/g replace all old keywords to new keywords
+$ :s/oldkeyword/newkeyword/g replace all old keywords to new keywords in current line
+
 ~~~

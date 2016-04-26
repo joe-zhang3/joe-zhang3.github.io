@@ -6,6 +6,12 @@ categories: shell
 permalink: /category/shell/customize
 ---
 
+List all shell you have installed in your MAC:
+
+~~~shell
+cat /etc/shells
+~~~
+
 1. install iterm
 2. install autojump:
 
