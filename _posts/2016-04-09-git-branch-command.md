@@ -7,10 +7,10 @@ permalink: /category/git/branch
 url: /category/git/branch
 ---
 
-CCreate and switch to a new branch
+Create and switch to a new branch
 
 ~~~shell 
-ggit checkout -b newbranch
+git checkout -b newbranch
 ~~~
 
 equals to
