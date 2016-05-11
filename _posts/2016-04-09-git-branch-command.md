@@ -10,7 +10,7 @@ url: /category/git/branch
 Create and switch to a new branch
 
 ~~~shell 
-git checkout -b newbranch
+ggit checkout -b newbranch
 ~~~
 
 equals to
