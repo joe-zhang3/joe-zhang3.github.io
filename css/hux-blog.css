@@ -605,7 +605,8 @@ article {
   overflow: hidden;
 }
 blockquote {
-  color: gray;
+  border-left: 6px solid #b4b4b4;
+  background-color: #f7f7f7;
   font-style: italic;
   font-size: 0.95em;
   margin: 20px 0 20px;

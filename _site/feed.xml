@@ -5,43 +5,45 @@
     <description>A place where I can put anything in mind here to prevent being forgotten.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 19 Jul 2019 16:33:29 +0800</pubDate>
-    <lastBuildDate>Fri, 19 Jul 2019 16:33:29 +0800</lastBuildDate>
+    <pubDate>Fri, 19 Jul 2019 17:25:35 +0800</pubDate>
+    <lastBuildDate>Fri, 19 Jul 2019 17:25:35 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
         <title>Deployment related</title>
-        <description>&lt;p&gt;These are some deployment strategy plus my personal thoughts&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;ol&gt;
-    &lt;li&gt;Blue/Green deployment&lt;/li&gt;
-  &lt;/ol&gt;
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;This is a note for popular deployment strategies plus my personal thoughts&lt;/p&gt;
 &lt;/blockquote&gt;
+
+&lt;h1 id=&quot;bluegreen-deployment&quot;&gt;Blue/Green deployment&lt;/h1&gt;
 
 &lt;p&gt;Need to have two identical environments. Let’s call it &lt;code class=&quot;highlighter-rouge&quot;&gt;blue&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;green&lt;/code&gt; enviroments. &lt;code class=&quot;highlighter-rouge&quot;&gt;Blue&lt;/code&gt; is normally running. Upgrade &lt;code class=&quot;highlighter-rouge&quot;&gt;green&lt;/code&gt; environments to the target version, switch network traffics to it, test it. If it is working propertly, upgrade &lt;code class=&quot;highlighter-rouge&quot;&gt;blue&lt;/code&gt; to the corresponding version as well.&lt;/p&gt;
 
-&lt;h3 id=&quot;pros&quot;&gt;Pros&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Pros&lt;/p&gt;
+&lt;/blockquote&gt;
+
 &lt;ul&gt;
   &lt;li&gt;0 Downtime&lt;/li&gt;
   &lt;li&gt;Low risk. Can easily rollback to previous stage&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;cons&quot;&gt;Cons&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Cons&lt;/p&gt;
+&lt;/blockquote&gt;
+
 &lt;ul&gt;
   &lt;li&gt;Cost increase.&lt;/li&gt;
   &lt;li&gt;Need to handle those unfinished transactions when switching network traffic&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;2. Gray publish&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h1 id=&quot;gray-publish&quot;&gt;Gray publish&lt;/h1&gt;
 
 &lt;h3 id=&quot;reqirement&quot;&gt;Reqirement&lt;/h3&gt;
 
-&lt;h3 id=&quot;pros-1&quot;&gt;Pros&lt;/h3&gt;
+&lt;h3 id=&quot;pros&quot;&gt;Pros&lt;/h3&gt;
 
-&lt;h3 id=&quot;cons-1&quot;&gt;Cons&lt;/h3&gt;
+&lt;h3 id=&quot;cons&quot;&gt;Cons&lt;/h3&gt;
 
 </description>
         <pubDate>Fri, 19 Jul 2019 00:00:00 +0800</pubDate>
