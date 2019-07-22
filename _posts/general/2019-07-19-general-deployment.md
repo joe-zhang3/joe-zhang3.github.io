@@ -11,7 +11,7 @@ permalink: /category/general/customize
 
 # Blue/Green deployment
 
-Need to have two identical environments. Let's call it `blue` and `green` enviroments. `Blue` is normally running. Upgrade `green` environments to the target version, switch network traffics to it, test it. If it is working propertly, upgrade `blue` to the corresponding version as well. 
+Need to have two identical environments. Let's call it `blue` and `green` enviroments. `Blue` is normally running. Upgrade `green` environments to the target version, switch network traffics to it, test it. 
 
 > Pros
 
