@@ -5,12 +5,49 @@
     <description>A place where I can put anything in mind here to prevent being forgotten.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 22 Jul 2019 11:50:16 +0800</pubDate>
-    <lastBuildDate>Mon, 22 Jul 2019 11:50:16 +0800</lastBuildDate>
+    <pubDate>Mon, 22 Jul 2019 17:05:46 +0800</pubDate>
+    <lastBuildDate>Mon, 22 Jul 2019 17:05:46 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
-        <title>Thinkings for architectures</title>
+        <title>All kinds of security attacks(TODO)</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;Peronsal understandings for some attacks like XSS, CSRF, Sql Injection&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Mon, 22 Jul 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/category/security</link>
+        <guid isPermaLink="true">http://localhost:4000/category/security</guid>
+        
+        <category>security</category>
+        
+        
+        <category>security</category>
+        
+      </item>
+    
+      <item>
+        <title>Autowired(WIP)</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;Some ideas for when and how to use &lt;code class=&quot;highlighter-rouge&quot;&gt;autowired&lt;/code&gt; keyword in Spring&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;autowired&quot;&gt;Autowired&lt;/h1&gt;
+
+</description>
+        <pubDate>Sun, 21 Jul 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/category/general/autowired</link>
+        <guid isPermaLink="true">http://localhost:4000/category/general/autowired</guid>
+        
+        <category>spring</category>
+        
+        
+        <category>general</category>
+        
+      </item>
+    
+      <item>
+        <title>Thinkings for architectures(WIP)</title>
         <description>&lt;blockquote&gt;
   &lt;p&gt;This is a note for popular deployment strategies plus my personal thoughts&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -18,10 +55,31 @@
 &lt;p&gt;These are a list of architecture related ideas. Audience is not limited to dev, but all kinds of technology related people.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;KISS&lt;/code&gt; Keep it simple stupid. Anytime, when you are working on a feature, design, coding etc. Make sure make it as simple as possible.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Crawl, Walk, Run&lt;/code&gt;. Make it work, make it fine, make it great.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Shared Nothing Architecture&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;KISS&lt;/strong&gt; (Keep it simple or stupid). 尽量把软件设计的简单一些，傻瓜一些&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;YAGNI&lt;/strong&gt; (You are’t gonna need it). 别手欠去耍小聪明的设计一些现在并不需要的功能&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Crawl, Walk, Run&lt;/strong&gt; (Make it work, make it better, make it greater). 跟小孩学走路一样，先爬，再走，再跑。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Automation Test&lt;/strong&gt; 自动化测试是构建稳定，高质量软件的重要途径。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;RoI&lt;/strong&gt; (Return of Investment). 考虑你的投资回报率，把好钢用在刀刃上&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;设计和测试尽量分开。测试随着开发进度走，而不是等开发完了一起测试&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;MVP&lt;/strong&gt; (minimal viable product) 你永远无法想象客户是怎么使用你的产品的。 先做出来的东西给他看，根据回馈来修改你的产品&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;尽可能少做新功能。对于有疑问的就别做，当然尽可能留一些扩展点&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;需要了解硬件，操作系统，到你的语言平台，这样才能做出更好的架构&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Amdahl Law&lt;/strong&gt; (大意为系统可并行化程度越高，多核越能发挥作用，废话) 多使用异步处理，比如immutable的数据，并行计算，尽量不要使用锁&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;对于一个non-blocking, event driven的系统而言，不要使用锁或其他的IO操作，它会使你的系统慢的跟马一样&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;设计无状态系统，尽量使用&lt;code class=&quot;highlighter-rouge&quot;&gt;Shared Nothing Architecture&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;不能可能实现 &lt;code class=&quot;highlighter-rouge&quot;&gt;exactly once delivery&lt;/code&gt;. 凡是宣称能达到&lt;code class=&quot;highlighter-rouge&quot;&gt;exactly once delivery&lt;/code&gt;的肯定在某些地方做了限制.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;尽可能的把你的系统设计成&lt;code class=&quot;highlighter-rouge&quot;&gt;幂等&lt;/code&gt;的，这样至少可以实现 &lt;code class=&quot;highlighter-rouge&quot;&gt;at least once delivery&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CAP Theorem&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
 </description>
         <pubDate>Sat, 20 Jul 2019 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/category/architecture</link>
@@ -35,7 +93,7 @@
       </item>
     
       <item>
-        <title>Deployment related</title>
+        <title>Deployment related(WIP)</title>
         <description>&lt;blockquote&gt;
   &lt;p&gt;This is a note for popular deployment strategies plus my personal thoughts&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -81,7 +139,7 @@
       </item>
     
       <item>
-        <title>Reactive Programming</title>
+        <title>Reactive Programming(TODO)</title>
         <description>&lt;h1 id=&quot;reactive-programming&quot;&gt;Reactive Programming&lt;/h1&gt;
 
 &lt;blockquote&gt;
@@ -347,116 +405,6 @@ git reset &lt;span class=&quot;nt&quot;&gt;--hard&lt;/span&gt; HEAD &lt;span cla
         
         
         <category>shell</category>
-        
-      </item>
-    
-      <item>
-        <title>git delete</title>
-        <description>&lt;p&gt;Add all files in current folder &amp;amp; subfolder&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git rm &amp;lt;filename&amp;gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Delete a local branch&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git branch &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &amp;lt;branchname&amp;gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Delete a remote branch&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git push origin :&amp;lt;branchname&amp;gt;
-git push origin &lt;span class=&quot;nt&quot;&gt;--delete&lt;/span&gt; &amp;lt;branchName&amp;gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Delete a remote tag&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git push originl &lt;span class=&quot;nt&quot;&gt;--delete&lt;/span&gt; tag &amp;lt;tagname&amp;gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
-        <pubDate>Sat, 09 Apr 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/category/git/delete</link>
-        <guid isPermaLink="true">http://localhost:4000/category/git/delete</guid>
-        
-        
-        <category>git</category>
-        
-      </item>
-    
-      <item>
-        <title>git branch</title>
-        <description>&lt;p&gt;Create and switch to a new branch&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git checkout &lt;span class=&quot;nt&quot;&gt;-b&lt;/span&gt; newbranch
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;equals to&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git branch &amp;lt;newbranch&amp;gt;
-git checkout &amp;lt;newbranch&amp;gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Push local branch to remote, if remote branch does not exist, create it.&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git push origin &amp;lt;localbranch&amp;gt;:&amp;lt;remotebranch&amp;gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;List all branches/remote branches&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git branch &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt;
-git branch &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Show remote branches and also trach information.&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git remote show origin
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Remove a local branch which does not exist in remote&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git fetch &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;How to rename a remote branch&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Delete a remote branch&lt;/li&gt;
-  &lt;li&gt;Rename local branch&lt;/li&gt;
-  &lt;li&gt;Push local branch to remote&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git push &lt;span class=&quot;nt&quot;&gt;--delete&lt;/span&gt; origin &amp;lt;branchname&amp;gt;
-git branch &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &amp;lt;original branch name&amp;gt; &amp;lt;new branch name&amp;gt;
-git push origin origin &amp;lt;new branch name&amp;gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;build up the track information between local branch and remote&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git branch &lt;span class=&quot;nt&quot;&gt;--set-upstream-to&lt;/span&gt; &amp;lt;localbranch&amp;gt; &amp;lt;origin/remotebranch&amp;gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-</description>
-        <pubDate>Sat, 09 Apr 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/category/git/branch</link>
-        <guid isPermaLink="true">http://localhost:4000/category/git/branch</guid>
-        
-        
-        <category>git</category>
         
       </item>
     

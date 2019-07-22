@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Deployment related"
+title:  "Deployment related(WIP)"
 subtitle: "All kinds of deployment strategies"
 date:   2019-07-19
 categories: general
