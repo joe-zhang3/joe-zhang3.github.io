@@ -3,8 +3,6 @@ layout: post
 title:  "Deployment related(WIP)"
 subtitle: "All kinds of deployment strategies"
 date:   2019-07-19
-categories: general
-permalink: /category/general/customize
 ---
 
 > This is a note for popular deployment strategies plus my personal thoughts

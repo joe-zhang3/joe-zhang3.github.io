@@ -3,8 +3,6 @@ layout: post
 author: "Joe"
 title:  "vim"
 date:   2016-04-10
-categories: vim
-permalink: /category/vim
 url: /category/vim
 tags: 
   - vim

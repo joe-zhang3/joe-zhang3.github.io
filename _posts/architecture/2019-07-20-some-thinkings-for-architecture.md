@@ -3,8 +3,6 @@ layout: post
 title:  "Thinkings for architectures(WIP)"
 subtitle: ""
 date:   2019-07-20
-categories: architecture
-permalink: /category/architecture
 tags:
   - architecture
 ---
