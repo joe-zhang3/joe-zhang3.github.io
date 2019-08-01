@@ -5,9 +5,207 @@
     <description>A place where I can put anything in mind here to prevent being forgotten.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 22 Jul 2019 17:05:46 +0800</pubDate>
-    <lastBuildDate>Mon, 22 Jul 2019 17:05:46 +0800</lastBuildDate>
+    <pubDate>Thu, 01 Aug 2019 14:48:20 +0800</pubDate>
+    <lastBuildDate>Thu, 01 Aug 2019 14:48:20 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Steps to create ci/cd for dotnet core projects</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;Steps to create ci/cd for dotnet core projects&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This is a note for what needs to be done to create &amp;amp; upload &amp;amp; deploy a project into kubernetes cluster&lt;/p&gt;
+
+&lt;h2 id=&quot;prepare-base-images&quot;&gt;Prepare base images&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Prepare dotnet-core-runtime &amp;amp; dotnet-core-sdk base image. 
+  modify corresponding &lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt; in the git repo&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Upload base images to artifactory which is done via a jenkins job.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;configure-jenkins-to-use-this-docker-template&quot;&gt;Configure Jenkins to use this docker template.&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/jenkins.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;prepare-your-ci-pipeline&quot;&gt;Prepare your &lt;code class=&quot;highlighter-rouge&quot;&gt;CI&lt;/code&gt; pipeline.&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Need to have a step named something like &lt;code class=&quot;highlighter-rouge&quot;&gt;containerize&lt;/code&gt; which is used to generate a docker image.&lt;/li&gt;
+  &lt;li&gt;Need to have a step named something like &lt;code class=&quot;highlighter-rouge&quot;&gt;package&lt;/code&gt; which is used to generate helm chart. 
+This will generate a chart which will be used for deploying&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;prepare-your-cd-pipeline&quot;&gt;Prepare your &lt;code class=&quot;highlighter-rouge&quot;&gt;CD&lt;/code&gt; pipeline.&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Optional&lt;/code&gt; Create a base chart and upload it to corresponding git repo&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Tue, 30 Jul 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/category/kubernetes</link>
+        <guid isPermaLink="true">http://localhost:4000/category/kubernetes</guid>
+        
+        
+        <category>kubernetes</category>
+        
+      </item>
+    
+      <item>
+        <title>Best practice for unit tests</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;Some thoughts for writting UT friendly code or how to write your unit test.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;1-do-not-rely-on-environment-for-your-unit-tests&quot;&gt;1. Do NOT rely on environment for your unit tests.&lt;/h2&gt;
+
+&lt;p&gt;e.g. do not try to connect to a real database.&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;EMCUnityConnectorTest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;_instance&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ConnectorInstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Endpoint&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;https://10.148.9.40&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;UserName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;atom&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;PasswordHash&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;kasNMFdKC/+C/qwan3Eu7PT440byo8Lwe3dYKbWQgqQyz8dG3fD0bdSJi+87gdxO&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Id&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Guid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5B32CF84-F39E-4AE6-8447-508FBAF423F5&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ConnectorTypeId&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Guid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;89DB00D6-4F17-444E-A4EA-F527D6FFB390&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;_logger&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;MockLogger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;_connector&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;EMCUnityConnector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;_connector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Initialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;[Fact]&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ConnectTest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;success&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_connector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Assert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;2-field-injection-is-not-recommended&quot;&gt;2. Field injection is NOT recommended.&lt;/h2&gt;
+
+&lt;p&gt;This means &lt;code class=&quot;highlighter-rouge&quot;&gt;@Autowired&lt;/code&gt; annotation should not be applied to a field. Check more details via &lt;a href=&quot;https://stackoverflow.com/questions/39890849/what-exactly-is-field-injection-and-how-to-avoid-it&quot;&gt;this&lt;/a&gt; link.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Bar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Foo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;doWork&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;doSomething&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Use constructor instead&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Bar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Foo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Bar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Foo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;doWork&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;doSomething&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;If you are going to write a unit test for the &lt;code class=&quot;highlighter-rouge&quot;&gt;doWork&lt;/code&gt; method, you will not be able to mock the &lt;code class=&quot;highlighter-rouge&quot;&gt;foo&lt;/code&gt; without the help of Spring IoC container.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;3-follow-dependency-inversion-princple-strictly&quot;&gt;3. Follow &lt;code class=&quot;highlighter-rouge&quot;&gt;Dependency Inversion&lt;/code&gt; princple strictly.&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g. interfaces).&lt;/li&gt;
+    &lt;li&gt;Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Which in general means, use &lt;code class=&quot;highlighter-rouge&quot;&gt;interface&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;abstract class&lt;/code&gt; as much as possible, or use &lt;code class=&quot;highlighter-rouge&quot;&gt;IoC&lt;/code&gt; containers&lt;/p&gt;
+
+&lt;h2 id=&quot;4-follow-single-responsibility-princple-strictly&quot;&gt;4. Follow &lt;code class=&quot;highlighter-rouge&quot;&gt;Single Responsibility&lt;/code&gt; princple strictly.&lt;/h2&gt;
+
+&lt;p&gt;Your method should handly only one thing, should be used for only one purpose.&lt;/p&gt;
+
+&lt;h2 id=&quot;5-how-to-handle-legacy-code&quot;&gt;5. How to handle legacy code?&lt;/h2&gt;
+
+&lt;p&gt;You are commonly facing a problem that it is pretty hard to write unit test for legacy code, which does not follow rules mentioned above. &lt;code class=&quot;highlighter-rouge&quot;&gt;Refactor&lt;/code&gt; is the only recommend way to fix that issue, but for sure, it takes time.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 24 Jul 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/category/general/best-practice-to-write-unit-tests</link>
+        <guid isPermaLink="true">http://localhost:4000/category/general/best-practice-to-write-unit-tests</guid>
+        
+        <category>unit test</category>
+        
+        
+        <category>general</category>
+        
+      </item>
     
       <item>
         <title>All kinds of security attacks(TODO)</title>
@@ -29,11 +227,79 @@
       <item>
         <title>Autowired(WIP)</title>
         <description>&lt;blockquote&gt;
-  &lt;p&gt;Some ideas for when and how to use &lt;code class=&quot;highlighter-rouge&quot;&gt;autowired&lt;/code&gt; keyword in Spring&lt;/p&gt;
+  &lt;p&gt;Some ideas for when and how to use &lt;code class=&quot;highlighter-rouge&quot;&gt;Autowired&lt;/code&gt; annotation in Spring&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h1 id=&quot;autowired&quot;&gt;Autowired&lt;/h1&gt;
+&lt;p&gt;There are three types of injections withing Spring framework.&lt;/p&gt;
 
+&lt;ul&gt;
+  &lt;li&gt;Constructor Injection.&lt;/li&gt;
+  &lt;li&gt;Setter Injection.&lt;/li&gt;
+  &lt;li&gt;Field Injection.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Constructor Injection
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt; &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Bar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+   &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Foo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+   &lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
+   &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Bar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Foo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+     &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Setter Injection
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt; &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Bar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+   &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Foo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+   &lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
+   &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setFoo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Foo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+     &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Field Injection
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt; &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Class&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
+   &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Foo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;It is apparently that third way is simple, straight forward, but it has a few drawbacks.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;It is not friendly for unit test. As you cannot easily mock a &lt;code class=&quot;highlighter-rouge&quot;&gt;foo&lt;/code&gt; and injected into the &lt;code class=&quot;highlighter-rouge&quot;&gt;bar&lt;/code&gt; object.&lt;/li&gt;
+  &lt;li&gt;You cannot inject a immutable objects, say a final object in Java.&lt;/li&gt;
+&lt;/ol&gt;
 </description>
         <pubDate>Sun, 21 Jul 2019 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/category/general/autowired</link>
@@ -145,6 +411,27 @@
 &lt;blockquote&gt;
   &lt;p&gt;What’s reactive programming&lt;/p&gt;
 &lt;/blockquote&gt;
+
+&lt;p&gt;4 Core Concepts&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Observer&lt;/li&gt;
+  &lt;li&gt;Observable&lt;/li&gt;
+  &lt;li&gt;Hot VS. Cold Observable&lt;/li&gt;
+  &lt;li&gt;Subject Variants&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kr&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Observer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;complete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Thu, 18 Jul 2019 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/category/general/reactive-programming</link>
@@ -268,143 +555,6 @@ git reset &lt;span class=&quot;nt&quot;&gt;--hard&lt;/span&gt; HEAD &lt;span cla
         
         
         <category>git</category>
-        
-      </item>
-    
-      <item>
-        <title>vim</title>
-        <description>&lt;p&gt;A few vim commands&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;:number &lt;span class=&quot;c&quot;&gt;# go to specified line&lt;/span&gt;
-
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;w &lt;span class=&quot;c&quot;&gt;# move one word forward&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;b &lt;span class=&quot;c&quot;&gt;# move one word backward&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ $ &lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# move the cursor to the end of current line&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;0 &lt;span class=&quot;c&quot;&gt;# move the cursor to the first of current line&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gg &lt;span class=&quot;c&quot;&gt;# move the cursor to the beginning of the file&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;G &lt;span class=&quot;c&quot;&gt;# move the cursor to the end of the file&lt;/span&gt;
-
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;u &lt;span class=&quot;c&quot;&gt;# undo &lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;U &lt;span class=&quot;c&quot;&gt;# undo all changes to the current line&lt;/span&gt;
-
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;x &lt;span class=&quot;c&quot;&gt;# delete one character&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dw &lt;span class=&quot;c&quot;&gt;# delete one `word`&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;d&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# delete all content after the cursor till the end of the line&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dd &lt;span class=&quot;c&quot;&gt;# delete the whole line&lt;/span&gt;
-
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;yy &lt;span class=&quot;c&quot;&gt;# copy the whole line&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;yw &lt;span class=&quot;c&quot;&gt;# copy the content start from the cursor till the end of the current **word**&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;y&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# copy the content start from the cursor till the end of the current **line**&lt;/span&gt;
-
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;p &lt;span class=&quot;c&quot;&gt;# paste&lt;/span&gt;
-
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;:e! &lt;span class=&quot;c&quot;&gt;# discard the change and reload the file to edit&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;:wq &lt;span class=&quot;c&quot;&gt;# save and exit &lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ZZ &lt;span class=&quot;c&quot;&gt;# save and exit&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;:q! &lt;span class=&quot;c&quot;&gt;# discard and exit&lt;/span&gt;
-
-
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ctrl+f scroll one screen down
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ctrl+b scroll one screen back
-
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;:%s/oldkeyword/newkeyword/g replace all old keywords to new keywords
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;:s/oldkeyword/newkeyword/g replace all old keywords to new keywords &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;current line
-
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
-        <pubDate>Sun, 10 Apr 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/category/vim</link>
-        <guid isPermaLink="true">http://localhost:4000/category/vim</guid>
-        
-        <category>vim</category>
-        
-        
-        <category>vim</category>
-        
-      </item>
-    
-      <item>
-        <title>Customize your shell with oh-my-zsh and autojump </title>
-        <description>&lt;p&gt;List all shell you have installed in your MAC:&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; /etc/shells
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;install iTerm&lt;/li&gt;
-  &lt;li&gt;install autojump:&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;brew install autojump
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;install oh my zsh&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;sh &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;-fsSL&lt;/span&gt; https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This will install oh my zsh to your local. It will change your default shell to zsh at the end of the process, if it doesn’t, execute below:&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;chsh &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; /bin/zsh
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Open .zshrc file which located at the root of current user. e.g. /Users/joezhang/&lt;/li&gt;
-  &lt;li&gt;Modify &lt;code class=&quot;highlighter-rouge&quot;&gt;plugin&lt;/code&gt; to include “autojump”, like &lt;code class=&quot;highlighter-rouge&quot;&gt;plugins=(git,autojump)&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Add this into the .zshrc file&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;brew &lt;span class=&quot;nt&quot;&gt;--prefix&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;/etc/profile.d/autojump.sh &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;brew &lt;span class=&quot;nt&quot;&gt;--prefix&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;/etc/profile.d/autojump.sh
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
-        <pubDate>Sat, 09 Apr 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/category/shell/customize</link>
-        <guid isPermaLink="true">http://localhost:4000/category/shell/customize</guid>
-        
-        
-        <category>shell</category>
         
       </item>
     

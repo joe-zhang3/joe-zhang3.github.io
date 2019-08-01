@@ -11,3 +11,19 @@ tags:
 # Reactive Programming
 
 > What's reactive programming
+
+4 Core Concepts
+
+- Observer
+- Observable
+- Hot VS. Cold Observable
+- Subject Variants
+
+
+~~~javascript
+interface Observer{
+  next: function
+  error: function
+  complete: function
+}
+~~~
