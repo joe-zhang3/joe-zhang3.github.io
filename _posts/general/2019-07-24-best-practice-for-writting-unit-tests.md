@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Best practice for unit tests"
+title:  "Best practice for writting unit tests"
 date:   2019-07-24
 categories: general
 permalink: /category/general/best-practice-to-write-unit-tests
