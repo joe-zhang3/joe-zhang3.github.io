@@ -5,8 +5,8 @@
     <description>A place where I can put anything in mind here to prevent being forgotten.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 01 Aug 2019 17:13:29 +0800</pubDate>
-    <lastBuildDate>Thu, 01 Aug 2019 17:13:29 +0800</lastBuildDate>
+    <pubDate>Fri, 02 Aug 2019 15:35:16 +0800</pubDate>
+    <lastBuildDate>Fri, 02 Aug 2019 15:35:16 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -197,13 +197,11 @@ This will generate a chart which will be used for deploying&lt;/li&gt;
 &lt;p&gt;You are commonly facing a problem that it is pretty hard to write unit test for legacy code, which does not follow rules mentioned above. &lt;code class=&quot;highlighter-rouge&quot;&gt;Refactor&lt;/code&gt; is the only recommend way to fix that issue, but for sure, it takes time.&lt;/p&gt;
 </description>
         <pubDate>Wed, 24 Jul 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/category/general/best-practice-to-write-unit-tests</link>
-        <guid isPermaLink="true">http://localhost:4000/category/general/best-practice-to-write-unit-tests</guid>
+        <link>http://localhost:4000/2019/07/24/best-practice-for-writting-unit-tests/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/07/24/best-practice-for-writting-unit-tests/</guid>
         
         <category>unit test</category>
         
-        
-        <category>general</category>
         
       </item>
     
@@ -214,8 +212,8 @@ This will generate a chart which will be used for deploying&lt;/li&gt;
 &lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 22 Jul 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/category/security</link>
-        <guid isPermaLink="true">http://localhost:4000/category/security</guid>
+        <link>http://localhost:4000/security/2019/07/22/security-attacks/</link>
+        <guid isPermaLink="true">http://localhost:4000/security/2019/07/22/security-attacks/</guid>
         
         <category>security</category>
         
@@ -298,17 +296,17 @@ This will generate a chart which will be used for deploying&lt;/li&gt;
 
 &lt;ol&gt;
   &lt;li&gt;It is not friendly for unit test. As you cannot easily mock a &lt;code class=&quot;highlighter-rouge&quot;&gt;foo&lt;/code&gt; and injected into the &lt;code class=&quot;highlighter-rouge&quot;&gt;bar&lt;/code&gt; object.&lt;/li&gt;
-  &lt;li&gt;You cannot inject a immutable objects, say a final object in Java.&lt;/li&gt;
+  &lt;li&gt;You cannot inject an immutable objects, say a final object in Java.&lt;/li&gt;
+  &lt;li&gt;With a constructor injection, you may easily find out a code smell issue. E.g. your constructor contains more args than some static code analyzer expected (like SonarQube), then you can refator it accordingly. But with field injection issue, you will not be able to spot that.&lt;/li&gt;
+  &lt;li&gt;It violates the encapsulation charactor of the OOP. As the IoC container is changing something which should not be changed.&lt;/li&gt;
 &lt;/ol&gt;
 </description>
         <pubDate>Sun, 21 Jul 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/category/general/autowired</link>
-        <guid isPermaLink="true">http://localhost:4000/category/general/autowired</guid>
+        <link>http://localhost:4000/2019/07/21/autowired/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/07/21/autowired/</guid>
         
         <category>spring</category>
         
-        
-        <category>general</category>
         
       </item>
     
@@ -348,13 +346,11 @@ This will generate a chart which will be used for deploying&lt;/li&gt;
 
 </description>
         <pubDate>Sat, 20 Jul 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/category/architecture</link>
-        <guid isPermaLink="true">http://localhost:4000/category/architecture</guid>
+        <link>http://localhost:4000/2019/07/20/some-thinkings-for-architecture/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/07/20/some-thinkings-for-architecture/</guid>
         
         <category>architecture</category>
         
-        
-        <category>architecture</category>
         
       </item>
     
@@ -396,11 +392,9 @@ This will generate a chart which will be used for deploying&lt;/li&gt;
 
 </description>
         <pubDate>Fri, 19 Jul 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/category/general/customize</link>
-        <guid isPermaLink="true">http://localhost:4000/category/general/customize</guid>
+        <link>http://localhost:4000/2019/07/19/general-deployment/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/07/19/general-deployment/</guid>
         
-        
-        <category>general</category>
         
       </item>
     
@@ -434,13 +428,11 @@ This will generate a chart which will be used for deploying&lt;/li&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Thu, 18 Jul 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/category/general/reactive-programming</link>
-        <guid isPermaLink="true">http://localhost:4000/category/general/reactive-programming</guid>
+        <link>http://localhost:4000/2019/07/18/reactive-programming/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/07/18/reactive-programming/</guid>
         
         <category>reactive</category>
         
-        
-        <category>general</category>
         
       </item>
     
@@ -465,8 +457,8 @@ This will generate a chart which will be used for deploying&lt;/li&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Wed, 13 Apr 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/category/git/diff</link>
-        <guid isPermaLink="true">http://localhost:4000/category/git/diff</guid>
+        <link>http://localhost:4000/git/2016/04/13/git-diff-command/</link>
+        <guid isPermaLink="true">http://localhost:4000/git/2016/04/13/git-diff-command/</guid>
         
         
         <category>git</category>
@@ -496,8 +488,8 @@ This will generate a chart which will be used for deploying&lt;/li&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Mon, 11 Apr 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/category/shell/general</link>
-        <guid isPermaLink="true">http://localhost:4000/category/shell/general</guid>
+        <link>http://localhost:4000/shell/2016/04/11/shell/</link>
+        <guid isPermaLink="true">http://localhost:4000/shell/2016/04/11/shell/</guid>
         
         
         <category>shell</category>
@@ -550,8 +542,8 @@ git reset &lt;span class=&quot;nt&quot;&gt;--hard&lt;/span&gt; HEAD &lt;span cla
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Mon, 11 Apr 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/category/git/general</link>
-        <guid isPermaLink="true">http://localhost:4000/category/git/general</guid>
+        <link>http://localhost:4000/git/2016/04/11/git-general-command/</link>
+        <guid isPermaLink="true">http://localhost:4000/git/2016/04/11/git-general-command/</guid>
         
         
         <category>git</category>

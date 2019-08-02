@@ -3,7 +3,6 @@ layout: post
 title:  "git general"
 date:   2016-04-11
 categories: git
-permalink: /category/git/general
 url: /category/git/general
 ---
 

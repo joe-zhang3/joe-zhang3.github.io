@@ -3,7 +3,6 @@ layout: post
 title:  "git diff"
 date:   2016-04-13
 categories: git
-permalink: /category/git/diff
 url: /category/git/diff
 ---
 

@@ -52,4 +52,6 @@ There are three types of injections withing Spring framework.
 It is apparently that third way is simple, straight forward, but it has a few drawbacks. 
 
 1. It is not friendly for unit test. As you cannot easily mock a `foo` and injected into the `bar` object.
-2. You cannot inject a immutable objects, say a final object in Java.
+2. You cannot inject an immutable objects, say a final object in Java.
+3. With a constructor injection, you may easily find out a code smell issue. E.g. your constructor contains more args than some static code analyzer expected (like SonarQube), then you can refator it accordingly. But with field injection issue, you will not be able to spot that.
+4. It violates the encapsulation charactor of the OOP. As the IoC container is changing something which should not be changed.

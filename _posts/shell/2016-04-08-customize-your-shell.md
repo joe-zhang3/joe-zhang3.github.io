@@ -3,7 +3,6 @@ layout: post
 title:  "Customize your shell with oh-my-zsh and autojump "
 date:   2016-04-09
 categories: shell
-permalink: /category/shell/customize
 ---
 
 List all shell you have installed in your MAC:
