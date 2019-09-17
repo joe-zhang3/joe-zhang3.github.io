@@ -10,35 +10,13 @@ tags:
 
 A few vim commands
 
-~~~shell
-$ :number # go to specified line
+```shell
 
-$ w # move one word forward
-$ b # move one word backward
-$ $ # move the cursor to the end of current line
-$ 0 # move the cursor to the first of current line
-$ gg # move the cursor to the beginning of the file
-$ G # move the cursor to the end of the file
+ys : add surround for selections. like ysiw' will add single quot to one word. yss" will add double quot to one whole line. 
+cs : change surronds for selections. like cs"' will change double quots to single quot for one word
+ds : remove surronds for selections. like ds' will remove single quot 
 
-$ u # undo 
-$ U # undo all changes to the current line
-
-$ x # delete one character
-$ dw # delete one `word`
-$ d$ # delete all content after the cursor till the end of the line
-$ dd # delete the whole line
-
-$ yy # copy the whole line
-$ yw # copy the content start from the cursor till the end of the current **word**
-$ y$ # copy the content start from the cursor till the end of the current **line**
-
-$ p # paste
-
-$ :e! # discard the change and reload the file to edit
-$ :wq # save and exit 
-$ ZZ # save and exit
-$ :q! # discard and exit
-
+gU/u : change case for selections. gUU upper case the whole line
 
 $ ctrl+f scroll one screen down
 $ ctrl+b scroll one screen back
@@ -46,4 +24,4 @@ $ ctrl+b scroll one screen back
 $ :%s/oldkeyword/newkeyword/g replace all old keywords to new keywords
 $ :s/oldkeyword/newkeyword/g replace all old keywords to new keywords in current line
 
-~~~
+```

@@ -7,8 +7,6 @@ tags:
   - architecture
 ---
 
-> This is a note for popular deployment strategies plus my personal thoughts
-
 These are a list of architecture related ideas. Audience is not limited to dev, but all kinds of technology related people.
 
 - **KISS** (Keep it simple or stupid). 尽量把软件设计的简单一些，傻瓜一些
@@ -29,5 +27,5 @@ These are a list of architecture related ideas. Audience is not limited to dev, 
 - 不能可能实现 `exactly once delivery`. 凡是宣称能达到`exactly once delivery`的肯定在某些地方做了限制.
 - 尽可能的把你的系统设计成`幂等`的，这样至少可以实现 `at least once delivery` 
 
-- `CAP Theorem` 
+- `CAP Theorem`. Consistency, Availability, Partition Tolerance, pick any two. 
 

@@ -5,8 +5,8 @@
     <description>A place where I can put anything in mind here to prevent being forgotten.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 02 Aug 2019 15:35:16 +0800</pubDate>
-    <lastBuildDate>Fri, 02 Aug 2019 15:35:16 +0800</lastBuildDate>
+    <pubDate>Wed, 21 Aug 2019 11:01:06 +0800</pubDate>
+    <lastBuildDate>Wed, 21 Aug 2019 11:01:06 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -223,7 +223,7 @@ This will generate a chart which will be used for deploying&lt;/li&gt;
       </item>
     
       <item>
-        <title>Autowired(WIP)</title>
+        <title>Autowired</title>
         <description>&lt;blockquote&gt;
   &lt;p&gt;Some ideas for when and how to use &lt;code class=&quot;highlighter-rouge&quot;&gt;Autowired&lt;/code&gt; annotation in Spring&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -300,6 +300,8 @@ This will generate a chart which will be used for deploying&lt;/li&gt;
   &lt;li&gt;With a constructor injection, you may easily find out a code smell issue. E.g. your constructor contains more args than some static code analyzer expected (like SonarQube), then you can refator it accordingly. But with field injection issue, you will not be able to spot that.&lt;/li&gt;
   &lt;li&gt;It violates the encapsulation charactor of the OOP. As the IoC container is changing something which should not be changed.&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;p&gt;In gereral, it is not recommended to use &lt;code class=&quot;highlighter-rouge&quot;&gt;Autowired&lt;/code&gt; against to fields, but it seems like different people have different ideas, as some Spring examples also use it that way, but based on my understanding, it is not right anyway.&lt;/p&gt;
 </description>
         <pubDate>Sun, 21 Jul 2019 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2019/07/21/autowired/</link>

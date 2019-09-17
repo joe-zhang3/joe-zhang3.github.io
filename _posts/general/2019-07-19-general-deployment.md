@@ -19,18 +19,16 @@ Need to have two identical environments. Let's call it `blue` and `green` enviro
 > Cons
 
 - Cost increase.
-- Need to handle those unfinished transactions when switching network traffic
+- Need to handle unfinished transactions when switching network traffic
 
-# Gray publish
+# Gray publish (Canary releases)
 
-### Reqirement
-
-### Pros
+Pick some candidates out, deploy the new version those those candidate(s), QA verify the change and deploy the change to all left servers/pods if QA shine the green light on. 
 
 
-### Cons
+# Rolling release
 
-
+Gradually deploy versions to servers/pods. 
 
 
 
