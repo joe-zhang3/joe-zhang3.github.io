@@ -5,9 +5,98 @@
     <description>A place where I can put anything in mind here to prevent being forgotten.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 21 Aug 2019 11:01:06 +0800</pubDate>
-    <lastBuildDate>Wed, 21 Aug 2019 11:01:06 +0800</lastBuildDate>
+    <pubDate>Tue, 24 Sep 2019 13:47:54 +0800</pubDate>
+    <lastBuildDate>Tue, 24 Sep 2019 13:47:54 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Kafka vs Pulsar</title>
+        <description>&lt;h1 id=&quot;kafka-vs-pulsar&quot;&gt;Kafka vs Pulsar&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;This is a note and also my personal understanding about these two mainly used message queue.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;A artical talks about the difference between these two, you can click &lt;a href=&quot;https://kafkaesque.io/7-reasons-we-choose-apache-pulsar-over-apache-kafka/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Kafka stores all everthing in its log, which is append-only, while Pulsar stores its data in a distrubuted store service - Apache BookKeeper. The drawback of the way how Kafka handles log is that when the log file is really big, and the broker is down, if you are adding a new broker, the broker needs to sync data for the dead broker, it will takes a long time.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Becasuse of #1, Kafka’s broker is stateful and Pulsar’s broker is stateless as it does not contains any data inside. Pulsar can scale streamlessly.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Kafka’s log can getting really big while Pulsar’s log won’t be that big because Pulsar will delete it is log.&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;Pulsar has two types of topics &lt;code class=&quot;highlighter-rouge&quot;&gt;persistent&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;non-persistent&lt;/code&gt;. The only difference between these two is about those messages that are not &lt;code class=&quot;highlighter-rouge&quot;&gt;ackownledged&lt;/code&gt; (Concusmer will acknowledge messages when it received). Which means all messages that are consumed will be deleted.&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;Kafka does not delete messages in topic after they are consumed.&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;The drawback of Pulsar is you cannot add more consumer on-demand, as it will be deleted by broker.&lt;/strong&gt; This means you cannot use Pulsar in a &lt;code class=&quot;highlighter-rouge&quot;&gt;Event Sourcing&lt;/code&gt; architecture.&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In general, both have their suitable scenario. For an &lt;code class=&quot;highlighter-rouge&quot;&gt;event sourcing&lt;/code&gt; architecure, Kafka is your choice.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 17 Sep 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/09/17/kafka-vs-pulsar/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/09/17/kafka-vs-pulsar/</guid>
+        
+        <category>message queue</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>DDoS attack</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;Talk about DDoS attack and ways to prevent it.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;what-is-ddos-attack&quot;&gt;What is DDoS attack?&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;In computing, a denial-of-service attack (DoS attack) is a cyber-attack in which the perpetrator seeks to make a machine or network resource unavailable to its intended users by temporarily or indefinitely disrupting services of a host connected to the Internet. Denial of service is typically accomplished by flooding the targeted machine or resource with superfluous requests in an attempt to overload systems and prevent some or all legitimate requests from being fulfilled&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;While DDoS means &lt;code class=&quot;highlighter-rouge&quot;&gt;distributed denial-of-service attack&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;three-main-types-of-ddos-attack&quot;&gt;Three main types of DDoS attack&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Volumetric Attacks.
+    &lt;ul&gt;
+      &lt;li&gt;Attackers just send as many requests as they can to a single server, occupy all open ports of this server.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Application-Layer Attacks
+    &lt;ul&gt;
+      &lt;li&gt;Attackers send floods of requests to the application. Application is busy with these requests and not able to process other legitimate requests.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Protocol Attacks
+    &lt;ul&gt;
+      &lt;li&gt;Mainly like SYN flood, client sends syn to server, server reponses syn-ack, and waiting for the ack fromm client, which never happens.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;best-practicases-to-prevent-ddos-attack&quot;&gt;Best practicases to prevent DDoS attack&lt;/h2&gt;
+</description>
+        <pubDate>Thu, 29 Aug 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/08/29/DDOS-attack/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/08/29/DDOS-attack/</guid>
+        
+        <category>DDoS</category>
+        
+        
+      </item>
     
       <item>
         <title>Steps to create ci/cd for dotnet core projects</title>
@@ -314,11 +403,7 @@ This will generate a chart which will be used for deploying&lt;/li&gt;
     
       <item>
         <title>Thinkings for architectures(WIP)</title>
-        <description>&lt;blockquote&gt;
-  &lt;p&gt;This is a note for popular deployment strategies plus my personal thoughts&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;These are a list of architecture related ideas. Audience is not limited to dev, but all kinds of technology related people.&lt;/p&gt;
+        <description>&lt;p&gt;These are a list of architecture related ideas. Audience is not limited to dev, but all kinds of technology related people.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;KISS&lt;/strong&gt; (Keep it simple or stupid). 尽量把软件设计的简单一些，傻瓜一些&lt;/li&gt;
@@ -343,7 +428,7 @@ This will generate a chart which will be used for deploying&lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;尽可能的把你的系统设计成&lt;code class=&quot;highlighter-rouge&quot;&gt;幂等&lt;/code&gt;的，这样至少可以实现 &lt;code class=&quot;highlighter-rouge&quot;&gt;at least once delivery&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CAP Theorem&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CAP Theorem&lt;/code&gt;. Consistency, Availability, Partition Tolerance, pick any two.&lt;/li&gt;
 &lt;/ul&gt;
 
 </description>
@@ -381,16 +466,16 @@ This will generate a chart which will be used for deploying&lt;/li&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Cost increase.&lt;/li&gt;
-  &lt;li&gt;Need to handle those unfinished transactions when switching network traffic&lt;/li&gt;
+  &lt;li&gt;Need to handle unfinished transactions when switching network traffic&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;gray-publish&quot;&gt;Gray publish&lt;/h1&gt;
+&lt;h1 id=&quot;gray-publish-canary-releases&quot;&gt;Gray publish (Canary releases)&lt;/h1&gt;
 
-&lt;h3 id=&quot;reqirement&quot;&gt;Reqirement&lt;/h3&gt;
+&lt;p&gt;Pick some candidates out, deploy the new version those those candidate(s), QA verify the change and deploy the change to all left servers/pods if QA shine the green light on.&lt;/p&gt;
 
-&lt;h3 id=&quot;pros&quot;&gt;Pros&lt;/h3&gt;
+&lt;h1 id=&quot;rolling-release&quot;&gt;Rolling release&lt;/h1&gt;
 
-&lt;h3 id=&quot;cons&quot;&gt;Cons&lt;/h3&gt;
+&lt;p&gt;Gradually deploy versions to servers/pods.&lt;/p&gt;
 
 </description>
         <pubDate>Fri, 19 Jul 2019 00:00:00 +0800</pubDate>
@@ -461,91 +546,6 @@ This will generate a chart which will be used for deploying&lt;/li&gt;
         <pubDate>Wed, 13 Apr 2016 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/git/2016/04/13/git-diff-command/</link>
         <guid isPermaLink="true">http://localhost:4000/git/2016/04/13/git-diff-command/</guid>
-        
-        
-        <category>git</category>
-        
-      </item>
-    
-      <item>
-        <title>shell commands</title>
-        <description>&lt;p&gt;Useful commands in shell&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ll &lt;span class=&quot;c&quot;&gt;# list all files and there permission, size, accessed count information. &lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!!&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# execute ***last*** command with sudo permission&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;history&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;keywords&quot;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# list the history of your commands and filter results by the keyword &lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;11 &lt;span class=&quot;c&quot;&gt;# execute the 11th command in the history&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# apply the change right away, especially when you change some environment variables.&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; -  &lt;span class=&quot;c&quot;&gt;# go back to last directory&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;something&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; file.txt    &lt;span class=&quot;c&quot;&gt;# change the content of file.txt to &quot;something&quot;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;something&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; file.txt   &lt;span class=&quot;c&quot;&gt;# appen &quot;something&quot; to the trail of the file.txt &lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
-        <pubDate>Mon, 11 Apr 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/shell/2016/04/11/shell/</link>
-        <guid isPermaLink="true">http://localhost:4000/shell/2016/04/11/shell/</guid>
-        
-        
-        <category>shell</category>
-        
-      </item>
-    
-      <item>
-        <title>git general</title>
-        <description>&lt;p&gt;Add all files in current folder &amp;amp; subfolder&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git add &lt;span class=&quot;nt&quot;&gt;-A&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;is equivalent to git add &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
-git add &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;is equivalent to git add &lt;span class=&quot;nt&quot;&gt;--update&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Revert all changes in working copy
-&lt;strong&gt;Make sure execute the command under the root of the git repo&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git checkout &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
-git checkout &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Revert all changes in stage&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git reset &lt;span class=&quot;c&quot;&gt;# put the staged changes back to working copy&lt;/span&gt;
-git reset &lt;span class=&quot;nt&quot;&gt;--hard&lt;/span&gt; HEAD &lt;span class=&quot;c&quot;&gt;# completely revert all changes, the change will not stay in your working copy either. &lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Rename of a file(s)&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git mv originalname newname
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Fully clean your working copy &amp;amp; index&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git fetch origin &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; git reset &lt;span class=&quot;nt&quot;&gt;--hard&lt;/span&gt; &amp;lt;branchname&amp;gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; git clean &lt;span class=&quot;nt&quot;&gt;-df&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Revert one commit on both local &amp;amp; remote&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git revert &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;sha] &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; git push origin
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
-        <pubDate>Mon, 11 Apr 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/git/2016/04/11/git-general-command/</link>
-        <guid isPermaLink="true">http://localhost:4000/git/2016/04/11/git-general-command/</guid>
         
         
         <category>git</category>
