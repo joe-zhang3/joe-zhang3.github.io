@@ -8,11 +8,11 @@ tags:
 
 # Kafka vs Pulsar
 
-> This is a note and also my personal understanding about these two mainly used message queue. 
+> This is a note and also my personal understanding about these two mainly being used message queue. 
 
 A artical talks about the difference between these two, you can click [here](https://kafkaesque.io/7-reasons-we-choose-apache-pulsar-over-apache-kafka/)
 
-1. Kafka stores all everthing in its log, which is append-only, while Pulsar stores its data in a distrubuted store service - Apache BookKeeper. The drawback of the way how Kafka handles log is that when the log file is really big, and the broker is down, if you are adding a new broker, the broker needs to sync data for the dead broker, it will takes a long time. 
+1. Kafka stores everthing in its log, which is append-only, while Pulsar stores its data in a distrubuted store service - Apache BookKeeper. The drawback of the way how Kafka handles log is that when the log file is really big, and the broker is down, if you are adding a new broker, the broker needs to sync data for the dead broker, it will takes a long time. 
 
 2. Becasuse of #1, Kafka's broker is stateful and Pulsar's broker is stateless as it does not contains any data inside. Pulsar can scale streamlessly.
 

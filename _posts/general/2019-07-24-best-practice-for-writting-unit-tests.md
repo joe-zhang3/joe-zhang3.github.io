@@ -95,3 +95,25 @@ Your method should handly only one thing, should be used for only one purpose.
 ## 5. How to handle legacy code?
 
 You are commonly facing a problem that it is pretty hard to write unit test for legacy code, which does not follow rules mentioned above. `Refactor` is the only recommend way to fix that issue, but for sure, it takes time.
+
+
+---
+
+# Something about .Net unit test. 
+
+In general, we would like all prjects are going to use .net core as the UT platform. (even the code you are going to test is .net framework based, it is also fine), the main reason is our CI servers (jenkins) are mainly located in the k8s cluster where .net framework is not allowed. 
+
+UT framework includes xUnit, NUnit, mstest/vstest will be the laste choice.
+
+## .net core
+
+1. Coverage tool - (Coverlet)[https://github.com/tonerdo/coverlet]
+2. Report generator - Sonarqube or Report Generator
+
+## .net framework
+
+1. Coverage tool - (OpenCover)[https://github.com/OpenCover/opencover]
+2. Report generator - Sonarqube or Report Generator
+
+
+

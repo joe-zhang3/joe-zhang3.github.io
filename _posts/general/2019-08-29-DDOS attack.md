@@ -26,3 +26,5 @@ While DDoS means `distributed denial-of-service attack`
   - Mainly like SYN flood, client sends syn to server, server reponses syn-ack, and waiting for the ack fromm client, which never happens. 
 
 ## Best practicases to prevent DDoS attack
+
+1. Increase the bandwith of your application, call your ISP when necessary.
