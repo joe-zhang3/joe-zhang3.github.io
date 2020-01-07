@@ -2,55 +2,21 @@
 layout: post
 title:  "Hackintosh"
 subtitle: ""
-date:   2019-10-08
-categories: security
+date:   2019-12-11
+categories: DIY
 tags:
-  - security
+  - DIY
 ---
 
-> Some experience for playing with Hackintosh.
+> OpenCore with AMD hackintosh
 
-I will not explain why to try a hackintosh, basically, because of the beauty of the macOS and the price of a mackintosh. lol...
+Need to follow [this](https://khronokernel-2.gitbook.io/opencore-vanilla-desktop-guide/) link step by step. I only put down those problems I met.
 
-## Build
+### Make a USB stick
 
-In general, the best build for a hackintosh is Intel CPU + AMD graphic card, but what I have on my machine is the opposite, I have a AMD Ryzen 2600x and a Nvidia 1060 ti graphic card 
+Stongly recommend you to use the native macOS way to make the USB installer disk, that is find the os you want to install and download it to your macintosh. Execute the `CreateInstallMedia` command to create the USB.
 
-My current build is:
+### Prepare files. 
 
-> CPU: AMD Ryzen 2600x
->
->  Graphic Card: Nvidia GTX 1060 Ti
->
->  Motherboard: MSI B450M Motar
+1. Download the laste `OpenCore` from [this](https://github.com/acidanthera/OpenCorePkg)
 
-I followed the link of [this](https://www.jianshu.com/p/5203dc0d83ef) artical and the OS can be installed successfully. The OS version is High Sierra (14.3.4)
-
-The first problem I met is the graphic card is not working properly. Download Nvidia webdriver fixed the problem. 
-
-## TODO
-
-The only problem left so far is I cannot use Pulse Secure to connect to the vpn. Every time when it reaches the step of "securing connections" the whole OS will be reboot suddenly. 
-
-Tried below solutions but with no luck so far:
-
-1. Use different version of Pulse Secure. I tried with 9.1, 9.0, 5.2, 5.3 but no one works. 
-2. I tred to install a windows VM and use PS in windows and share files between these two OSes, it works fine. However, I am not able to debug the application as it requires connection to other services in office's network. 
-
-3. I also want to try the latest version of High Sierra (14.3.6) but haven't finished yet.
-
-Upgrade to the latest version of macOS of High Sierra solved the problem !!! 
-
-Also if it complains something about net.pulsesecure.PulseSecureFirewall kext, go directly to the /Library/Extensions directory and delete that kext.
-
-Clover configuration modifies the config.plist file
-Clover modifies kexts or drivers of your EFI volume
-
-## How to get rid of the USB stick after the installation is finshed?
-
-1. Run Clover and choose first two to make your hard driver be bootable.
-
-![clover](clover.png)
-
-2. Copy the `EFI` directory from your USB to your hard driver.
-3. Finished

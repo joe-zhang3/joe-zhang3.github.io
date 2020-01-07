@@ -19,9 +19,9 @@ public EMCUnityConnectorTest()
 
     _instance = new ConnectorInstance()
     {
-        Endpoint = "https://10.148.9.40",
-        UserName = "atom",
-        PasswordHash = "kasNMFdKC/+C/qwan3Eu7PT440byo8Lwe3dYKbWQgqQyz8dG3fD0bdSJi+87gdxO",
+        Endpoint = "https://xxx.xxx.x.x",
+        UserName = "user",
+        PasswordHash = "password",
         Id = Guid.Parse("5B32CF84-F39E-4AE6-8447-508FBAF423F5"),
         ConnectorTypeId = Guid.Parse("89DB00D6-4F17-444E-A4EA-F527D6FFB390")
     };
